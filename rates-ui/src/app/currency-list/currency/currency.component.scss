@@ -1,0 +1,25 @@
+@import '../../variables';
+
+.rates {
+  &-currency-card {
+
+    background-color: $black;
+    color: $primary-font-color;
+    min-height: 500px;
+
+    .card-text {
+      margin-top: 20px;
+    }
+
+    &__table {
+      background-color: transparent;
+    }
+
+    &__profit {
+      font-size: 110%;
+      font-weight: bold;
+      margin-bottom: 25px;
+      margin-top: 10px;
+    }
+  }
+}

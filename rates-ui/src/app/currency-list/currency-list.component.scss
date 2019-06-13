@@ -1,0 +1,43 @@
+@import '~bootstrap/scss/bootstrap-grid';
+@import '../variables';
+
+.rates {
+  &-currency-list {
+    &__loading {
+      max-height: 100px;
+      max-width: 100px;
+      text-align: center;
+    }
+
+    &__failed {
+      max-height: 75px;
+      max-width: 75px;
+    }
+
+    &__image {
+      margin: 25px auto;
+
+      max-height: 70px;
+      max-width: 70px;
+    }
+
+    &__card {
+      color: $primary-font-color;
+      margin: 12px;
+      transition: transform .3s;
+
+      &:hover {
+        box-shadow: $hover-box-shadow;
+        transform: scale(1.1);
+      }
+
+      @each $currency-name in $currency-names {
+        &--#{$currency-name} {
+          background: url('/assets/#{$currency-name}_bg.jpg') no-repeat;
+          background-position: left 15%;
+          background-size: cover;
+        }
+      }
+    }
+  }
+}

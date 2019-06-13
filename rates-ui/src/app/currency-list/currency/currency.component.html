@@ -1,0 +1,60 @@
+<div class="rates-currency container" *ngIf="currencyRates">
+  <div
+    class="rates-currency-card rates-currency-card__{{
+      currencyRates.name
+    }} card"
+  >
+    <div class="card-body">
+      <h3>{{ currencyRates.name }}</h3>
+      <h5 class="card-title">{{ currencyRates.title }}</h5>
+      <p class="card-text">{{ currencyRates.description }}</p>
+      <div class="card-text">
+        <div *ngIf="currencyRates.bestProfitableTrade" class="rates-currency-card__profit">
+          <h5>Max Profitable Trade</h5>
+
+          <div class="rates-currency-card__profit--trade">
+            Buy Trade: {{ currencyRates.bestProfitableTrade.buyRate.time.format('HH:mm') }} at {{ currencyRates.bestProfitableTrade.buyRate.price | currency }}
+          </div>
+
+          <div class="rates-currency-card__profit--trade">
+            Sell Trade: {{ currencyRates.bestProfitableTrade.sellRate.time.format('HH:mm') }} at {{ currencyRates.bestProfitableTrade.sellRate.price | currency }}
+          </div>
+
+          <div class="rates-currency-card__profit--total">
+            Total Profit: {{ currencyRates.bestProfitableTrade.profit | currency }}
+          </div>
+        </div>
+      </div>
+      <div class="card-text">
+
+      <h5>Pricing Data for {{ currencyRates.date.format('L') }}</h5>
+
+    <div class="container">
+        <div class="row">
+            <table class="rates-currency-card__table table table-hover table-dark table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Time</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let rates of currencyRates.rates">
+                <td>{{ rates.time.format('HH:mm') }}</td>
+                <td>{{ rates.price | currency }}</td>
+              </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+      <a
+        href="#"
+        title="back to currency list page"
+        class="rates__currency-card-back-button btn btn-danger"
+        [routerLink]="['/currencies']"
+        >Back</a
+      >
+    </div>
+    </div>
+  </div>
+</div>

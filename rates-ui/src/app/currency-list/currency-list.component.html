@@ -1,0 +1,48 @@
+<div class="rates-currency-list">
+  <div *ngIf="isLoading">
+    <img
+      class="rates-currency-list__loading"
+      src="assets/loader.gif"
+      alt="loading currency rates"
+    />
+  </div>
+
+  <div *ngIf="!isLoading && loadingFailed">
+    <img
+      class="rates-currency-list__failed"
+      src="assets/error.png"
+      alt="error occured loading currency rates"
+    />
+  </div>
+
+  <div *ngIf="!isLoading && !loadingFailed && currencyRatesList.length">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-1" *ngFor="let currencyRates of currencyRatesList">
+          <div class="rates-currency-list__card rates-currency-list__card--{{ currencyRates.name }} card">
+            <img
+              class="rates-currency-list__image card-img-top"
+              attr.src="assets/{{ currencyRates.name }}_icon.svg"
+              attr.alt="{{ currencyRates.name }} icon"
+            />
+            <div class="card-body">
+              <h3>{{ currencyRates.name }}</h3>
+              <h5 class="card-title">{{ currencyRates.title }}</h5>
+              <p class="card-text">
+                <span *ngIf="currencyRates.bestProfitableTrade" class="rates-currency-list__card-profit">
+                  Max Profit: {{
+                    currencyRates.bestProfitableTrade.profit | currency
+                  }}
+                </span>
+              </p>
+              <a href="#" title="to currency details page" class="btn btn-danger" (click)="onClickCurrencyDetails(currencyRates, $event)">View detailed info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!isLoading && !loadingFailed && !currencyRatesList.length" class="rates-currency-list__empty">
+    <h6>Sorry, no currency rates were found for today!  Come back tomorrow though!</h6>
+  </div>
+</div>
