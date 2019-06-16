@@ -15,4 +15,4 @@ platformBrowserDynamic().bootstrapModule(AppModule, {
   providers: [{provide: LOCALE_ID, useValue: 'en-AU' }]
 }).catch(err => console.error(err));
 
-moment.lang('en-AU');
+moment.locale('en-AU');
