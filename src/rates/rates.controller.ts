@@ -1,7 +1,7 @@
 import { Controller, Module, Get } from '@nestjs/common';
 import { RatesService } from './rates.service';
 
-@Controller('rates')
+@Controller('rates/today')
 @Module({
     providers: [RatesService],
   })

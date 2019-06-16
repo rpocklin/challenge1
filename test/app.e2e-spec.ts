@@ -23,9 +23,9 @@ describe('AppController (e2e)', () => {
   });
 
   // TODO: rates
-  it('/rates (GET)', () => {
+  it('/rates/today (GET)', () => {
     return request(app.getHttpServer())
-      .get('/rates')
+      .get('/rates/today')
       .expect(200)
       .expect(RATES);
   });
